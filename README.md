@@ -79,7 +79,33 @@ window.onresize = function(event) {
 	transform: translateX(-50%);
 }
 ```
+## Option 3 ##
+1. Get scrollbar width and use it as a CSS custom properties (variables).
+```
+var windowWidth = function(){
+		return Math.max( $(window).width(), window.innerWidth);
+	},
+	bodyWidth = function(){
+		return Math.max(
+			document.documentElement["clientWidth"],
+			document.body["scrollWidth"],
+			document.documentElement["scrollWidth"],
+			document.body["offsetWidth"],
+			document.documentElement["offsetWidth"]
+		);
+	},
+	scrollbarWidth = windowWidth() - bodyWidth();
 
+document.documentElement.style.setProperty( '--scrollbarwidth', scrollbarWidth + 'px' );
+```
+2. Add CSS
+```
+.alignfull {
+	width: calc( 100vw - var(--scrollbarwidth) );
+	margin-left: 50%;
+	transform: translateX(-50%);
+}
+```
 Resources:
 [:root](https://developer.mozilla.org/en-US/docs/Web/CSS/:root),
 [Using CSS custom properties (variables)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables)

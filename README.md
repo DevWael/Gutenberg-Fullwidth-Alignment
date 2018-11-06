@@ -80,7 +80,8 @@ window.onresize = function(event) {
 }
 ```
 ## Option 3 ##
-1. Get scrollbar width and use it as a CSS custom properties (variables).
+Get scrollbar width and use it as a CSS custom properties (variables).
+1. Add JS
 ```
 var windowWidth = function(){
 		return Math.max( $(window).width(), window.innerWidth);
